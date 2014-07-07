@@ -1,0 +1,41 @@
+<div class="" data-ng-controller="TranslateController">
+	<h1>Translate Page</h1>
+	<div class='row'>
+		<div class="col-lg-6">
+			<form data-ng-submit="translate()">
+				
+				<label>Source:</label>
+				<select data-ng-model="srce" name='srce'>
+					<option value="es">Español</option>
+					<option value="en">Ingles</option>
+					<option value="pt_br">Portugues</option>
+				</select>
+				
+				<label>Target:</label>
+				<select data-ng-model="tget" name='tget'>
+					<option value="es">Español</option>
+					<option value="en">Ingles</option>
+					<option value="pt_br">Portugues</option>
+				</select>
+				
+				<textarea placeholder='Text' style="margin: 0px; height: 162px; width: 576px;" data-ng-model="txt" name='txt' value="Text"></textarea>
+
+				<input type="submit" id="submit" value="Submit" />
+			</form>	
+		</div>
+		<div class="col-lg-6">
+			<div data-ng-show='isSuccess' id='download'></div>
+			<div data-ng-show='isSuccess'>
+				<p>
+					Texto de {{srce}} a {{tget}}:
+				</p>
+				<p>
+					{{text}}
+				</p>
+			</div>
+			<p data-ng-show='!isSuccess'>
+				{{err}}
+			</p>
+		</div>
+	</div>
+</div>
