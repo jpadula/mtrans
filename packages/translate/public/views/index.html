@@ -17,8 +17,22 @@
 					<option value="en">Ingles</option>
 					<option value="pt_br">Portugues</option>
 				</select>
-				
-				<textarea placeholder='Text' style="margin: 0px; height: 162px; width: 576px;" data-ng-model="txt" name='txt' value="Text"></textarea>
+				<p>
+					<label> File or Text?: </label>
+					<input type="radio" ng-click='clickFileOrText("file")' name="fileOrText" value="File"> File
+					<input type="radio" ng-click='clickFileOrText("text")' name="fileOrText" value="Text" checked> Text
+				</p>
+				<p ng-show='file'>
+					<label>Select file</label>
+ 					<input type="file" data-ng-model='fileUpload' name='fileUpload' on-read-file="showContent($fileContent)" />
+				</p>
+
+				<div ng-show='!file'>
+					<p>
+					<label>Text</label>
+						<textarea  placeholder='Text' style="margin: 0px; height: 162px; width: 576px;" data-ng-model="txt" name='txt' value="Text"></textarea>
+					</p>
+				</div>
 
 				<input type="submit" id="submit" value="Submit" />
 			</form>	

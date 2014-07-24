@@ -7,12 +7,34 @@ angular.module('mean.translate').controller('TranslateController', ['$scope','$h
             name: 'translate'
         };
 
+        $scope.clickFileOrText = function(click) {
+          if (click == 'file') {
+            $scope.file = true;
+          }
+
+          if (click == 'text') {
+            $scope.file = false;
+            $scope.content = null;
+            $scope.fileUpload = null;
+          }
+        }
+
+        $scope.showContent = function($fileContent){
+          $scope.file = true
+          $scope.content = $fileContent;
+        };
+
         $scope.translate = function() {
-      		
+      		var text;
+          if ($scope.content)
+            text = $scope.content;
+          else
+            text = $scope.txt;
+
           var data = {
           		'srce':$scope.srce,
           		'tget':$scope.tget,
-          		'txt' : $scope.txt
+          		'txt' : text
           	};
       		
           $http.post('/translate',data)
